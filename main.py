@@ -20,10 +20,10 @@ bot = telebot.TeleBot(TOKEN)
 def forward_order(message):
     if message.chat.id == YOUR_CHAT_ID:
         text = message.text.lower() if message.text else ""
-        if "đơn hàng" in text or "đơn mới" in text or "order" in text:
+        if "Kho Báu" in text or "Phát Hiện" in text or "Chia Sẻ" in text:
             try:
                 bot.forward_message(GROUP_CHAT_ID, YOUR_CHAT_ID, message.message_id)
-                print("✅ Forward đơn hàng mới thành công")
+                print("✅ Forward con hàng mới thành công")
             except:
                 bot.send_message(GROUP_CHAT_ID, f"📦 Đơn hàng mới:\n{message.text}")
 
