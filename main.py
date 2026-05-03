@@ -9,7 +9,7 @@ app = Flask(__name__)
 def home():
     return "Bot đang chạy 24/7 trên Render"
 
-# ================== CẤU HÌNH (ĐÃ CẬP NHẬT) ==================
+# ================== CẤU HÌNH ==================
 TOKEN = "8464538918:AAFgetkBqQNNuBzIfk07bccUIXBjhzZlAWU"
 YOUR_CHAT_ID = 8240242915
 GROUP_CHAT_ID = -5101863832
@@ -20,12 +20,12 @@ bot = telebot.TeleBot(TOKEN)
 def forward_order(message):
     if message.chat.id == YOUR_CHAT_ID:
         text = message.text.lower() if message.text else ""
-        if "Kho Báu" in text or "Phát Hiện" in text or "Chia Sẻ" in text:
+        if "Kho Báo" in text:          # ← Đã đổi thành "kho báo"
             try:
                 bot.forward_message(GROUP_CHAT_ID, YOUR_CHAT_ID, message.message_id)
-                print("✅ Forward con hàng mới thành công")
+                print("✅ Forward 'kho báo' thành công")
             except:
-                bot.send_message(GROUP_CHAT_ID, f"📦 Đơn hàng mới:\n{message.text}")
+                bot.send_message(GROUP_CHAT_ID, f"📦 Kho báo:\n{message.text}")
 
 def run_flask():
     app.run(host='0.0.0.0', port=10000)
